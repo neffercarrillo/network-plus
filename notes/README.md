@@ -897,22 +897,131 @@
 
 ### Computer Mathematics
 
-- base-10 (decimals) 
-- 
+- base-10 (decimals) - 0,1,2,3,4,5,6,7,8,9
+- base-2 (binary) - 0,1
+- <demo of converting from binary to decimal>
 
 ### Subnetting
 
+- split a network into smaller networks.
+- created subnets. 2^s where is is the number of borrowed bits.
+  - example: /25. 2^1 = 2 subnets. number of borrowed bits = 1
+- assignable ip addresses. 2^h = 2 where h = number of host bits.
+  - example: /25 2^7 - 22. 32 total - 25 network = 7 host.
+- network id. first ip in range for a network.
+- broadcast id. last ip in the range of a network.
+- classless inter domain routing (CIDR). 
+- variable length subnet mask (VLSM). allows subnets of various sizes to be used and requires a protocol that supports it.
+- vlsm is a subnetting of subnets.
+
 ### Subnetting Practice
+
+- remember -> is the question asking about total ips or assignable ips?
 
 ### Subnetting by Hand
 
+- demo
+- /31 is cisco-supported and some other routers are starting to support it
+- always determine the number of subnets first and then calculate the number of available ips
+
 ### IPv6 Addressing
+
+- 128 bit addresses
+- (ipv4) address exhaustion.
+- ipv6 340 undecillion addresses
+- larger address space
+- no broadcasts
+- no fragmentation
+- simplified header
+- ipv6 addresses use hexadecimal digits
+  - 32 digits
+- if a segments contains four consecutive zeros, you can use one zero.
+- double colon rule
+- unicast. used to identify a single interface.
+  - globally routed. similar to ipv4's unicast class a, b, and c addresses and begins with 2000-3999.
+  - link-local/local use. private IP. FE80 at the beginning.
+  - stateless address autoconfig (SLAAC). eliminates the need to obtain addresses from a central server.
+- multicast. used to identify a set of interfaces and begins with FF.
+- anycast. used to identify a set of interfaces so that a packet can be sent to any member of a set.
+- a single interface can be assigned to multiple different ipv6 addresses.
+- slaac. 
+- extended unique identifier (EUI). allows a host to assign itself a unique 64-bit ipv6 interface identifier called EUI-64.
+  - uses the device's mac address.
+- dhcpv6 protocol. 
+- neighbor discovery protocol (NDP). used to learn the layer 2 addresses that are in a network.
 
 ### IPv6 Data Flows
 
+- unicast is similar to ipv4 unicast
+- multicast is similar to ipv4 multicast. multicast groups.
+- anycast. unique to ipv6. 
+
 ### IPv4 and IPv6 Compatibility Requirements
 
-## Section 10:
+- dual stack. allows the operation of both ipv4 and v6 protocols on the same net architecture
+- tunneling. encapsulation of packets of a different protocol.
+  - encapsulate ipv6 packets within ipv4 packets
+- nat64. machanism that allows ipv6-ony devices to communicate with ipv4 servers and services
+- nat64 gateway. 
+
+## Section 10: Routing
+
+### Routing
+
+- router. forwards traffic between networks.
+
+### Routing Fundamentals
+
+- router. routes traffi between subnets/networks.
+- each subnet or external network is going to be its own broadcast domain.
+- switch. layer 2.
+- multilayer switch. level 3. performs routing.
+- described how a packet goes from one device in a network to another device in a different network.
+- pc1 (data frame)-> router 1 (packet) -> router 2 (data frame) -> pc2
+
+### Routing Tables
+
+- routing table. 
+- layer 3 (ip) to layer 2 (mac) map
+- directly connected route. learned by physical connection between two routers.
+- static route. manually configured by an admin.
+- default static route. 0.0.0.0/0. if you dont know where to go, just go here.
+- dynamic route. learned by exchanging info between routers.
+- split horizon. used to prevent routing loops.
+- poison reverse. another method to stop routing loops. 
+
+### Routing Protocols
+
+- interior gateway protocol (IGP)
+- external gateway protocols (EGP). operates between autonomous systems.
+- router advertisement method. 
+- distance vector. 
+- convergence. time it takes for routers to update their routing tables.
+- hold-down timer. prevents updates for a specific period of time and speeds up convergence.
+- hop count. number of routers to go through.
+- link state. cost and speed of connections. faster convergence time.
+- routing information protocol (RIP). distance vector protocol that uses hop count. internal gateway protocol. max hops of 15. if 16 it considered infinite. runs over udp.
+- open shortest path first (OSPF). link state protocol that uses cost.
+- cost is based on link speed between routers.
+- intermediate system to intermediate system (IS-IS). link state protocol that also uses cost and functions like ospf but not as widely popular.
+- enhanced interior gateway routing protocol (EIGRP). hybrid of distance vector and linkstate protocol that uses bandwidth and delay (proprietary Cisco protocol)
+- border gateway protocol (BGP). path vector that uses the number of autonomous system hops instead of router hops. backbone of the internet.
+
+### Route Selection
+
+- determines which path a router could take.
+- believeability of a route
+- administrative distance (AD). lower ad is considered more believeable/trustworthy
+- metrics associated with each route
+- hop count. least number of hops.
+- bandwidth. lowest cost of bandwidth means the highest amount of bandwidth to use.
+- delay. least delay.
+- believeability. lowest number.
+
+### Address Translation
+
+- 
+
 ## Section 11:
 ## Section 12:
 ## Section 13:
