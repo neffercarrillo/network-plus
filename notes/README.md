@@ -1020,10 +1020,169 @@
 
 ### Address Translation
 
-- 
+- network address translation (NAT). used to conserve IPv4 addresses. translates private ip addreses to public ip addreess.
+- dynamic nat (DNAT). automatically assigns an ip address from a pool and gives a one-to-one translation.
+- static nat (SNAT). manually assigns an ip address and gives a one-to-one translation. used as a security feature.
+- port address translation (PAT). sharing of one public ip by multiple private ip addresses. one to many translation.
+- How nat works...
+  - inside local. private ip address referencing an inside device.
+  - inside global. public ip address referencing an inside device.
+  - outside local. private ip address referencing an outside device.
+  - outside global. public ip address referencing an outside device.
 
-## Section 11:
-## Section 12:
+### Routing Redundancy Protocols
+
+- routing redundancy protocol. prevents disruptions in communication by automatically rerouting data traffic in case of a path or device failure.
+- first hop redundancy protocol (FHRP). set of protocols designed to ensure network reliability by providing automatic failover to a backup router.
+- reliability. ensures comms remain up and running.
+- load balancing. distributes network traffic.
+- seamless transitions. sends data from a failed router to redirect to a standby router.
+- virtual ip. ip address that is not bound to a specific device. is a representative for a device or a group of devices.
+- subinterface. single physical interface on a router or a switch to be subdivided into multiple logical interfaces.
+- hot standby router protocol (HSRP). developed by cisco. can establish a fault-tolerant default gateway for devices on a local network segment.
+- active router.
+- preempting. higher priority router takes over as the active router if it comes online after the initial election. 
+- virtual router redundancy protocol (VRRP). standard redundancy protocol. open standard. multiple routers configuration. simple and automatic election scheme.
+- gateway load balancing protocol (GLBP). developed by cisco. takes redundancy by adding load balancing capabilities.
+
+### Configuring Routers
+
+- <<demo>>
+
+### Multicast Routing
+
+- multicast routing. multicast sender sends traffic to a class d ip address, known as a multicast group.
+- igmp. internet group management protocol. used by clients and routers to let routers know which interfaces have multicast receivers and allow clients to join a multicast group.
+- three versions of igmp. v1, v2 an v3.
+- protocol independent multicast (PIM). routes multicast traffic between routers and forms a multicast distribution tree. 
+- pim dense mode (PIM-DM). uses periodic flood and prune behavior to form optimal distribution tree. 
+- pim sparse mode (PIM-SM). shared distribution tree and creates an optimal distribution tree through shortest path tree (SPT) switchover.
+
+### Generic Routing Encapsulation
+
+- generic routing encapsulation (GRE). tunneling protocol used to enapsulate a wide variety of network layer protocols inside virtual point-to-point links over an IP network.
+- operate at layer 3 of the osi model
+
+## Section 11: Network Services
+
+### Network Services
+
+- network service. function provided by the network infrastructure.
+
+### Dynamic Host Configuration Protocol (DHCP)
+
+- provides an ip address to every machine on the network.
+- scope. list of valid ips.
+- dhcp reservation. exclude ip addresses from being handed to devices.
+- discover.
+- offer.
+- request.
+- acknowledge.
+- default lease time. home 24 hrs. corp 7 or 30 days.
+- dynamic assignment.
+- static assignment.
+- dhcp relay. forward dhcp packets between clients and servers.
+- dhcp operates on udp.
+- ip helper. forwards different kinds of udp broadcasts across the router and can be used in conjunction with a dhcp relay.
+
+### Understanding DHCP
+
+- <<demo of the dora process>>
+- <<demo of statically assigned addresses>>
+
+### Stateless Address Autoconfiguration (SLAAC)
+
+- stateless address autoconfiguratio (SLAAC). used in ipv6 networks. allows hosts to configure their own ip address.
+- device initiation
+- router solicitation
+- router advertisement
+- address configuration
+- final check
+
+### Domain Name System (DNS)
+
+- domain name system (DNS). used to find a website using human-readable hostnames instead of numeric ip addresses.
+- fully qualified domain name (FQDN). 
+- root > tld > second level domain > subdomain > host
+- uniform resource locator (URL). 
+- host file. text file that serves as the first point of contact when a website wants to contact a site.
+
+### DNS Record Types
+
+- a. address. hostname. ipv4.
+- aaaa. address. hostname. ipv6.
+- cname. canonical name. points a domain to another domain or subdomain.
+- mx. mail exchange.
+- soa. start of authority. stores info about a domain or a zone.
+- zone transfer. sends dns records data from primary nameserver to a secondary nameserver.
+- ptr. pointer. correlates an ip adress with a domain name. opposite of a name record. used for reverse dns lookup.
+- advanced research projects agency network (arpanet).
+- forward lookup. use dns to find ip.
+- txt. text. adds text into the dns.
+- ns. nameserver. which dns nameserver has the authority.
+- nameserver. dns server that stores all dns records for a given domain.
+- internal dns. allows cloud instances on the same network to access each other.
+- external dns. 
+- time to live (TTL). how long to cache a query before requesting a new one.
+- dns resolver/dns cache. makes a local copy of every dns entry it resolves.
+- recursive lookup. dns server communicates with other dns servers to find a name. server will get the ip address and report back.
+- iterative lookup. each dns server responds directly to the client with an address for another dns server that may have the ip address.
+
+### Securing DNS
+
+- dns security extensions (DNSSEC). digital tamper-proof seal for dns data to ensure the info reaching the device is what the server intended to send. does not encrypt data.
+- dns over https (DoH). send dns queries through the https protocol.
+- dns over tls (DoT). encapsulates dns traffic inside of transport layer security tunnel.
+- dns snooping. attacker monitors dns queries to infer that websites a user is visiting.
+
+### Understanding DNS
+
+- <<demo>>
+
+### Network Time Protocol (NTP)
+
+- synchronizes clocks between systems
+- udp over port 123
+- stratum = layers
+- stratum 0. most precise time keeping devices. reference clocks.
+- stratum 1. ntp servers. primary time servers.
+- stratum 2. connected and synced to a s1 server.
+- stratum 3. connected and synced to a s2 server.
+- every layer adds a little delay.
+- ntp can handle a maximum of 15 stratum levels
+- precision time protocol (PTP). protocol used to sync clocks on a computer network. ideal for networks that require precise timekeeping.
+- network time security (NTS). extension of ntp. provides crypto security for the time sync provided by the ntp servers.
+
+### Quality of Service (QoS)
+
+- quality of service (QoS). optimize network performance based on types of traffic.
+- delay. time a packet travels from a src to a dest.
+- jitter. uneven arrival of packets.
+- drop. occurs during network congestion.
+- effective bandwidth. look at the slowest connection in the network.
+
+### QoS Categorization
+
+- purpose of qos. categorize traffic, apply policy and prioritize.
+- best effort - no qos. fifo.
+- integrated services (IntServ) - hard qos. strict bandwidth reservations. more strict.
+- differentiated services (DiffServ) - soft qos. routers and switches can make decisions based on markings and can fluctuate traffic. less strict.
+
+### QoS Mechanism
+
+- classification. categories.
+- marking. alter bits within frame. there is a type of service (ToS) byte.
+- congestion management. determines the order in which packets are sent.
+- queueing algorithms.
+- congestion avoidance. newly arriving packets would be discarded if the device's output queue fills to capacity.
+- random early detection (RED). used to prevent an overflow from ocurring.
+- red drops packets based on their defined limits.
+- policing. discard packets that exceed the configured rate limit. recommended for high speed interfaces.
+- shaping. allows buffer to delay traffic from exceeding the configured rate. better job of maximizing bandwidth.
+- link efficiency: compression. payload is compressed to conserve bandwidth.
+- link efficiency: link fragmentation and interleaving (LFI). frafgments large data packets and interleaves smaller data packets between the fragments.
+
+## Section 12: Wide Area Networks (WANs)
 ## Section 13:
 ## Section 14:
 ## Section 15:
