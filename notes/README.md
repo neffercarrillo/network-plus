@@ -1183,8 +1183,241 @@
 - link efficiency: link fragmentation and interleaving (LFI). frafgments large data packets and interleaves smaller data packets between the fragments.
 
 ## Section 12: Wide Area Networks (WANs)
-## Section 13:
-## Section 14:
+
+### WAN Area Networks
+
+- fiber optic
+- cable (DOCSIS)
+- digital subscriber line (DSL)
+- satelitte
+- cellular
+- microwave
+- leased line
+- MPLS
+- Understanding WAN Connections
+
+### Fiber Optic Connections
+
+- fiber to the home (FTTH). connection brought directly into a residence. highest speed.
+- fiber to the curb/cabinet (FTTC). cables run to he curbside or the cabinet. copper from the cabinet to the home. 
+- fiber to the node/neighborhood (FTTN). connection extended to a central point in an area. allows services providers leverage existing copper infra.
+- fiber to the building/basement (FTTB). cables reach the building's main comms room. 
+
+### Cable (DOCSIS) Connections
+
+- hybrid fiber-coaxial (HFC). blend of fiber-optic and coaxial cables.
+- data over cable service interface spec (DOCSIS). standardizes how data is transmitted over a hybrid fiber coax network.
+- upstream between 5 and 42 MHz.
+- downstream between 50 and 860 MHz.
+- supports today's high-speed internet access.
+
+### Digital Subscriber Line (DSL) Connections
+
+- transmit digital data over the telephone network.
+- dsl 3 types.
+- asymetric dsl (ADSL). different dl/ul speed.
+- symmetric dsl (SDSL). works like a T1 w/ equal ul/dl speeds.
+- very high bit rate dsl (VDSL). very high speeds. dl 50 Mbps+ and ul over 10Mbps
+- DSLAM. point of presence that's owned by the telco.
+
+### Satellite Connections
+
+- method of using comm sats located in space to connect a user to the internet.
+- slow.
+- expensive.
+- high latency.
+- used in remote/mobile environments
+- low-earth orbit option for less latency
+
+### Cellular Connections
+
+- G in xG refers to the generation of cel tech.
+- 1G - 30 KHz 2Kbps
+- 2G - 1800 MHz 14.4 - 64 Kbps. EDGE technology.
+- 3G - 1.6-2GHz 144Kbps to 2Mbps. 
+  - WCDMA. wideband code division multiple acces. umts standard. 2Mbps
+  - HSPA. high speed access. 14.4Mbps. Known as 3.5G.
+  - HSPA+. high speed packet access evolution. 50Mbps 3.75G.
+- 4G - 2-8GHz - 100 Mbps to 1 Gbps.
+- 4G LTE. 4g long term evolution. 100 Mbps.
+- LTE-A. LTE Advanced.
+- 5G - 10 Gbps
+  - Low band - 600-850 MHz - 30-250 Mbps
+  - Mid band - 2.5-3.7 GHz - 100-900 Mbps
+  - High band - 25-39 GHz - Extremely fast speeds in the Gbps
+- GSM. global system for mobile comms. converts voie call to digital. 
+- CDMA. code division multiple access. uses code division to split up the channel. 
+  - WCDMA. wideband cdma.
+  - UMTS. universal mobile telephone system.
+- gsm is more widely supported.
+
+### Microwave Connections
+
+- beam of radio waves in the microwave freq range to tx info
+- can provide a fast connection
+- wimax. wordlwide interoperability for microwave access.
+- expensive.
+- complex installation
+- wireless fixed location service
+
+### Leased Line Connections
+
+- fixed bandwidth and symmetric data connection (ul/dl are identical).
+- dedicated leased line. 
+- bandwidth options.
+- reliable.
+- secure.
+- expensive.
+- wan connection.
+
+### MPLS Connections
+
+- MPLS. multiprotocol label switching. technique used to elevate efficiency and flexibility of provider networks.
+- label switching process. 
+  1. label assignment
+  2. label switching
+  3. label removal
+- versatility. 
+- quality of service. 
+- reliability.
+- redundancy.
+- used by service providers for forwarding data in the backend.
+- *label routing*
+
+### Understanding WAN Connections
+
+- most common - cable modems and fiber optic modems.
+- satellite modems.
+- cellular modems.
+
+## Section 13: Cloud and Datacenter
+
+### Cloud and the Datacenter
+
+- cloud computing
+- cloud service models
+- could deployment models
+- using cloud computing
+- cloud connectivity
+- cloud security
+- network virtualization
+- software defined network (SDN)
+- software defined wide area network (SD-WAN)
+- virtual extensible local area network (VXLAN)
+- sase and sse
+
+### Cloud Computing
+
+- high availability. services experience very little downtime.
+- measured in terms of a percentage. 
+- 99.999% uptime. only have 5 minutes and 15 secs of downtime every year.
+- scalability. ability to increase the number of things in our system at a linear rate.
+- vertical scaling (scaling up). add more resources to a server. i.e. add more cpus
+- horizontal scaling (scale out). add additional servers.
+- rapid elasticity. quickly scale up or down.
+- elasticity. system's ability to adapt to changes in demand in real time.
+- metered utilization. pay per use.
+- measured service. pay a monthly fee independent of usage.
+- shared resources. minimize costs by putting virtual machines on someone else's servers.
+- file synchronization. store data which can then spread to other places.
+
+### Cloud Service Models
+
+- on-premise solution.
+- hosted solution. third-party service provider.
+- types of service. saas, paas, iaas.
+- includes everything - application, data, runtime, middleware, os, virtualization, servers, storage and networking.
+- paas does not include application or data. contains the rest.
+- iaas. includes virtualization, servers and storage. focused on the hardware only.
+
+### Cloud Deployment Models
+
+- public cloud.
+- private cloud. i.e. aws govcloud us
+- hybrid clould. public + private cloud.
+- community cloud. infra shared between different orgs with common service needs.
+- multi-tenancy. share computing resources in a public or private cloud.
+- single-tenancy. assigns a resource to a single org. less efficient and more expensive.
+
+### Using Cloud Computing
+
+- <<demo of amazon lightsail>>
+
+### Cloud Connectivity
+
+- vpn. virtual private network. establishes a secure connection between onpremise network, remote offices, etc. site to site connection mostly.
+- private-direct connection. extends existing data center into provider's network. supports faster speeds.
+
+### Cloud Security
+
+- virtual private cloud. vpc. logically isolated section of a cloud provider.
+- iac. infrastructure as code. privisioning of architecture where the deployment of resources is performed by scripted automation and orchestration.
+- subnet. range within the virtual private cloud.
+- route table. routes to determine where network traffic goes within the private cloud.
+- internet gateway. vpc component that allows comms between instances in your private cloud and the internet.
+- network address translation gateway. broker between private subnet and the internet.
+- network access control lists. acl. 
+  - inbound rules.
+  - outbound rules.
+- security groups. designed to function at the instance level.
+  - considered to act like a stateful firewall.
+- vpc peering. network connection between two vpcs that enable routing traffic between them privately.
+- vpc endpoints. 
+- vpn connections. 
+
+### Network Virtualization
+
+- network function virtualization (NFV). 
+- nfv infrastructure. hardware and virt resources necesary for deploying managing and executing VNFs
+- management and network orchestration (MANO). brains of the NFV.
+- virtual network functions (VNFs). software implementation of network functions. 
+- flexibility and rapid deployments.
+- cost efficiency.
+
+### Software Defined Network (SDN)
+
+- sdn.software defined network. uses software based controllers or APIs to communicate w/ hardware to direct traffic on a network.
+- infrastructure as code (IAC). deployment of resources is performed by scripted automation.
+- control plane. makes decisions about traffic.
+- data plance. carries user traffic on the network.
+- management plane. administers the routers and switches inside the network and monitors traffic.
+- advantages. 
+- disadvantages. single point of failure. high vulnerability. 
+- open sdn. open source variant of sdn that relies on open source technology.
+- hybrid sdn. traditional sdn protocols to operate itself.
+- sdn overlay. using software to create layers of network abstraction that can be used to run multiple virtualized network layers on top of a physical network.
+
+### Software-Defined Wide Area Network (SD-WAN) 
+
+- sd-wan. virtualized approach for managing and optimizing WAN connections.
+
+### Virtual Extensible Local Area Network (VXLAN)
+
+- vxlan. network virt tech that addresses the limitations posed by traditional network infrastructures.
+- is a network overlay. encapsulates ehternet frames (layer 2) within a udp packet (layer 4).
+- vxlan tunnel end points (VTEPs). performs the encapsulation and decapsulation of ethernet frames into vxlan packets.
+- vxla segment. layer 2 network overlaid onto a layer 3 network that is then identified by a unique 24 bit vni.
+- scalability. supports up to 16 million virtual networks.
+- flexibility. extends layer 2 networks across differnt data centers or cloud envs.
+- improved utilization. optimizes traffic flows.
+- can be complex to configure.
+- encapsulation/decapsulation introduces latency.
+- configuration. 
+
+### SASE and SSE
+
+- 
+
+## Section 14: Network Security Fundamentals
+
+### Network Security Fundamentals
+
+- 
+
+### The CIA Triad
+
+- 
+
 ## Section 15:
 ## Section 16:
 ## Section 17:
